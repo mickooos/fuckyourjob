@@ -113,7 +113,7 @@ class PackageResource extends Resource
                     ->icon('heroicon-o-table-cells')
                     ->color('success')
                     ->action(function () {
-                        return app(Excel::class)->download(new PackageExport, 'stupidassjob.xlsx');
+                        return app(Excel::class)->download(new PackageExport, 'package_recap.xlsx');
                     })
             ]);
     }
