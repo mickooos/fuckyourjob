@@ -22,6 +22,8 @@ return new class extends Migration
             $table->unsignedBigInteger('kurir');
             $table->unsignedBigInteger('petugas');
             $table->string('catatan');
+            $table->string('taken_by')->nullable();
+            $table->dateTime('dateandtime_taken')->nullable();
             $table->timestamps();
 
             // Foreign key constraints

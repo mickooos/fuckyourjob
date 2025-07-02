@@ -19,23 +19,23 @@ class PackageExport implements FromCollection, WithHeadings
             ->get()
             ->map(function ($package) {
                 return [
-                    'Tanggal'       => $package->created_at->format('d/m/Y'),
-                    'Unit'          => $package->unit,
-                    'Pengirim'      => $package->pengirim,
-                    'Kurir'         => $package->courier ? $package->courier->nama : 'No Kurir',
-                    'Penerima'      => $package->penerima,
-                    'Deskripsi'     => $package->deskripsi,
-                    'Petugas'       => $package->handler ? $package->handler->nama : 'No Petugas',
-                    'Posisi'        => $package->position ? $package->position->nama : 'No Posisi',
-                    'Catatan'       => $package->catatan,
-                    'Tanggal Diambil' =>$package->updated_at->format('d/m/Y'),
-                    'Jam Diambil'     =>$package->updated_at->format('H:i'),
+                    'Tanggal'                   => $package->created_at->format('d/m/Y'),
+                    'Unit'                      => $package->unit,
+                    'Pengirim'                  => $package->pengirim,
+                    'Kurir'                     => $package->courier ? $package->courier->nama : 'No Kurir',
+                    'Penerima'                  => $package->penerima,
+                    'Deskripsi'                 => $package->deskripsi,
+                    'Petugas'                   => $package->handler ? $package->handler->nama : 'No Petugas',
+                    'Posisi'                    => $package->position ? $package->position->nama : 'No Posisi',
+                    'Catatan'                   => $package->catatan,
+                    'Diambil Oleh'              => $package->taken_by ?? 'Belum Diambil',
+                    'Tanggal dan Jam Diambil'   => $package->dateandtime_taken ? $package->dateandtime_taken->format('d/m/Y H:i') : 'Belum Diambil',
                 ];
             });
     }
 
     public function headings(): array
     {
-        return ['Tanggal', 'Unit', 'Pengirim', 'Kurir', 'Penerima', 'Deskripsi', 'Petugas', 'Posisi', 'Catatan', 'Tanggal Diambil', 'Jam Diambil'];
+        return ['Tanggal', 'Unit', 'Pengirim', 'Kurir', 'Penerima', 'Deskripsi', 'Petugas', 'Posisi', 'Catatan', 'Diambil Oleh', 'Tanggal dan Jam Diambil'];
     }
 }

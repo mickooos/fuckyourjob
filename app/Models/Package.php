@@ -16,7 +16,13 @@ class Package extends Model
         'posisi',
         'kurir',
         'catatan',
+        'taken_by',
+        'dateandtime_taken',
         'petugas'
+    ];
+
+    protected $casts = [
+        'dateandtime_taken' => 'datetime',
     ];
 
     public function tenant()

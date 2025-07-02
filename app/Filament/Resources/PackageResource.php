@@ -7,6 +7,7 @@ use App\Exports\PackageExport;
 use App\Filament\Resources\PackageResource\Pages;
 use App\Models\Package;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -49,6 +50,13 @@ class PackageResource extends Resource
                     ->required(),
                 Forms\Components\TextArea::make('catatan')
                     ->required(),
+                Forms\Components\TextInput::make('taken_by')
+                    ->label('Diambil')
+                    ->nullable(),
+                Forms\Components\DateTimePicker::make('dateandtime_taken')
+                    ->label('Tanggal dan Waktu Diambil')
+                    ->timezone('Asia/Jakarta')
+                    ->nullable(),
                 Forms\Components\Select::make('petugas')
                     ->relationship('handler', 'nama')
                     ->required(),
@@ -90,12 +98,7 @@ class PackageResource extends Resource
                 Tables\Columns\TextColumn::make('handler.nama')
                     ->label('Petugas')
                     ->sortable()
-                    ->searchable(),
-               
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->searchable(),    
             ])
             ->filters([
                 //
